@@ -1,2 +1,11 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1>Book detail</h1>
+<%= image_tag @books.user.get_profile_image(40,40) %>
+<%= link_to "#{@books.user.name}", user_path(@books.user_id) %>
+<%= link_to "#{@books.title}", book_path(@books) %>
+<%= @books.body %>
+<%= link_to "Edit", edit_book_path(@books) %>
+<%= link_to "Destroy", book_path(@books), method: :delete, "data-confirm" => "本当に消しますか？" %>
+
+
+<!--共通テンプレ呼び出し/コントローラの変数注意-->
+<%= render 'users/common', user: @user, book: @book %>

@@ -1,2 +1,11 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h1>Books</h1>
+<% @books.each do |book| %>
+<div>
+<%= image_tag book.user.get_profile_image(50,50) %>
+<%= link_to "#{book.title}", book_path(book) %>
+<%= book.body %>
+</div>
+<% end %>
+
+<!--共通テンプレ呼び出し/コントローラの変数注意-->
+<%= render 'users/common', user: @user, book: @book %>

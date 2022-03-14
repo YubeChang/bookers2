@@ -24,6 +24,7 @@
         <li><%= link_to "Log in", new_user_session_path %></li>
       <% end %>
     </header>
+    <%= render 'layouts/flash' %>
     <%= yield %>
   </body>
 </html>

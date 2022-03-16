@@ -1,12 +1,27 @@
-<h1>Book detail</h1>
-<%= image_tag @books.user.get_profile_image(40,40) %>
-<%= link_to "#{@books.user.name}", user_path(@books.user_id) %>
-<%= link_to "#{@books.title}", book_path(@books) %>
-<%= @books.body %>
-<% if @books.user_id == current_user.id %>
-  <%= link_to "Edit", edit_book_path(@books) %>
-  <%= link_to "Destroy", book_path(@books), method: :delete, "data-confirm" => "本当に消しますか？" %>
-<% end %>
+<p id="notice"></p>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
 
-<!--共通テンプレ呼び出し/コントローラの変数注意-->
-<%= render 'users/common', user: @user, book: @book %>
+      <div class="col-md-3">
+        <%= render 'users/common', user: @user, book: @book %>
+      </div>
+
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table table-hover table-inverse">
+            <tr>
+              <td>
+                <%= link_to image_tag(@books.user.get_profile_image(40,40)), user_path(@books.user_id) %><br>
+                <%= link_to "#{@books.user.name}", user_path(@books.user_id) %>
+              </td>
+              <td><%= link_to "#{@books.title}", book_path(@books) %></td>
+              <td><%= @books.body %></td>
+                <% if @books.user_id == current_user.id %>
+                  <td><%= link_to "Edit", edit_book_path(@books),class: "btn btn-sm btn-success" %></td>
+                  <td><%= link_to "Destroy", book_path(@books),class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+                <% end %>
+            </tr>
+            </table>
+          </div>
+        </div>
+      </div>
